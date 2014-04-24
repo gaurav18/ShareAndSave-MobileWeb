@@ -5,7 +5,7 @@ location varchar(70),
 description varchar(150),
 map_loc_x varchar(10),
 map_loc_y varchar(10),
-event_date date
+event_date int
 );
 
 insert into events (event_name, location, description, map_loc_x , map_loc_y, event_date) values ("RedCross Blood Donation Drive", "Student Center Ballroom", "Collecting bloood of all blood types", "33.774295", "-84.398847" , "today");
@@ -13,6 +13,49 @@ insert into events (event_name, location, description , map_loc_x , map_loc_y, e
 insert into events (event_name, location, description) values ("RedCross Blodd Donation Drive", "Student Center Ballroom", "Collecting bloood of all blood types");
 
 
+sudo ssh -i keyfile.pem ec2-user@54.186.185.120
+scp -i keyfile <file> ec2-user@54.186.185.120:
+
+
 
  "33.774295", 
 , 
+
+
+alter table user
+add map_loc_x varchar(10);
+
+alter table user
+add map_loc_y varchar(10);
+
+alter table user
+add last_donated date;
+
+alter table user
+modify last_donated int;
+
+
+create table notifications (
+id int primary key auto_increment,
+event_name int,
+user_name int,
+sent varchar(5)
+);
+
+create table attendance (
+id int primary key auto_increment,
+event_name int,
+user_name int,
+reminded varchar(5)
+);
+
+alter table attendance
+add reminded varchar(5);
+
+alter table events
+modify event_date int;
+
+insert into user (username, email) values ("palindrome", "narang.gaurav18@gmail.com");
+
+insert into attendance (event_name, user_name, reminded) values (3, 23, "false");
+update attendance set reminded = 'false' where id = 1;
