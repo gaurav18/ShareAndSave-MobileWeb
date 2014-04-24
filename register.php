@@ -10,6 +10,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
+		
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -44,6 +45,10 @@
 												<div>
 													<label>Name:</label>
 													<input type="text" name="user_name"/>
+												</div>
+												<div>
+													<label>Username:</label>
+													<input type="text" />
 												</div>
 												<div>
 													<label>Blood group(tap the textbox to select)</label>
