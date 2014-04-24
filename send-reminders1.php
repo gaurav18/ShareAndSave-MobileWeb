@@ -4,9 +4,9 @@ $dbuser = 'root';
 $dbpass = 'mas';
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 $today = getdate();
-$d = $today['mday'];
-$m = $today['mon'];
-$y = $today['year'];
+$d = $today[mday];
+$m = $today[mon];
+$y = $today[year];
 if(! $conn )
 {
   die('Could not connect: ' . mysql_error());
@@ -20,9 +20,9 @@ if(! $retval )
 {
   die('Could not get data: ' . mysql_error());
 }
-while($row = mysql_fetch_array($retval, MYSQL_ASSOC))
-{	
 
+while($row = mysql_fetch_array($retval, MYSQL_ASSOC))
+{
     if ( $row['reminded']=='true') {
     	// Do nothing
     }
@@ -43,11 +43,15 @@ while($row = mysql_fetch_array($retval, MYSQL_ASSOC))
 		if ($row_event != null) {
 			$timestamp = $row_event['event_date'];
 			$event_name_real = $row_event['event_name'];
+		
 			$nowtime = getdate($timestamp);
-			
-			
-			if (( $d-$nowtime['mday'] <= 2) && ($nowtime['mon'] == $m)) {
-					
+			if (( $d-$nowtime[mday] <= 2) && ($nowtime[mon] == $m)) {
+				echo "d\n";
+				echo $d;
+				echo "\n";
+				echo "nowtime\n";
+				echo $nowtime[mday];
+				echo "\n";
 				$user_name = $row['user_name'];
 				
 				$sql2 = "SELECT * FROM user ".
