@@ -87,6 +87,15 @@
 									<p>
 										<?php echo $row['description']; ?>
 									</p>
+
+									<p>
+										<form action="attend-event.php" method="post">
+												<input type="hidden" name="user_name" value=<?php echo $_SESSION['user']; ?>></input> 
+												<input type="hidden" name="event_id" value=<?php echo $row['id']; ?>></input>
+												<input type="submit"  value="Attend"></input>
+												<div class="clear"></div>
+										</form>
+									</p>
 								</article>
                             <?php 
 
