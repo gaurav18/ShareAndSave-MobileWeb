@@ -1,0 +1,18 @@
+create table events (
+id int primary key auto_increment,
+event_name varchar(30),
+location varchar(70),
+description varchar(150),
+map_loc_x varchar(10),
+map_loc_y varchar(10),
+event_date date
+);
+
+insert into events (event_name, location, description, map_loc_x , map_loc_y, event_date) values ("RedCross Blood Donation Drive", "Student Center Ballroom", "Collecting bloood of all blood types", "33.774295", "-84.398847" , "today");
+insert into events (event_name, location, description , map_loc_x , map_loc_y, event_date) values ("Emory Blood Donation Drive", "Emory Hospital, Midtown", "Collecting bloood of all blood types", "33.770464", "-84.386040", "today");
+insert into events (event_name, location, description) values ("RedCross Blodd Donation Drive", "Student Center Ballroom", "Collecting bloood of all blood types");
+
+
+
+ "33.774295", 
+, 

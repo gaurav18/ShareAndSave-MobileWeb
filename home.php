@@ -4,9 +4,10 @@
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+<?php session_start();?>
 <html>
 	<head>
-		<title>Striped by HTML5 UP</title>
+		<title>Share And Save - DashBoard</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -34,58 +35,65 @@
 		<!-- Wrapper -->
 			<div id="wrapper">
 
+				<?php
+				$dbhost = 'localhost:3036';
+				$dbuser = 'root';
+				$dbpass = 'mas';
+				$conn = mysql_connect($dbhost, $dbuser, $dbpass);
+				if(! $conn )
+				{
+				  die('Could not connect: ' . mysql_error());
+				}
+
+				$user_name = $_SESSION['user'];
+
+				$sql = "SELECT * ".
+				       "FROM events";
+
+				mysql_select_db('mas');
+				$retval = mysql_query( $sql, $conn );
+				if(! $retval )
+				{
+				  die('Could not get data: ' . mysql_error());
+				}
+
+				?>
+
 				<!-- Content -->
 					<div id="content">
 						<div id="content-inner">
-					<article class="is-post is-post-excerpt">
-                                    <header>
-                                        <h2><a href="#">Edit preferences</a></h2>
-                                    </header>
-                                    <p>
-                                        <form class="register active">
-											<div class="column">
-												<div>
-													<label>Name:</label>
-													<input type="text" />
-												</div>
-												<div>
-													<label>Address:</label>
-													<input type="text" />
-												</div>
-											
-												<div>
-													<label>Email:</label>
-													<input type="text" />
-												</div>
-												<div>
-													<label>Password:</label>
-													<input type="password" />
-												</div>
-											</div>
-											<div class="bottom">
-											
-											<input type="submit" value="Update" />
-												<div class="clear"></div>
-											</div>
-										</form>
-                                    </p>
-                                </article>
+					
+							<!-- Post -->
+								<article class="is-post is-post-excerpt">
+									<header>
+										<h2><a href="#">Welcome <?php echo $_SESSION['user'];?></a></h2>
+									</header>
+							
 
-							<!-- Pager
-								<div class="pager">-->
-									<!--<a href="#" class="button previous">Previous Page</a>
-									<div class="pages">
-										<a href="#" class="active">1</a>
-										<a href="#">2</a>
-										<a href="#">3</a>
-										<a href="#">4</a>
-										<span>&hellip;</span>
-										<a href="#">20</a>
+							<?php 
+							while ( $row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+							$url = "showevent.php?name=".$row['id'];
+							?>
+							<!-- Post -->
+								<article class="is-post is-post-excerpt">
+									<header>
+
+										<h2><?php echo "<a href='".$url."'>"; echo $row['event_name']; echo "</a>"; ?></h2>
+										<span class="byline"><?php echo $row['location']; ?></span>
+									</header>
+									<div class="info">
+										<span class="date"><span ><?php echo $row['event_date']; ?></span></span>
 									</div>
-									<a href="#" class="button next">Next Page</a>
-									-->
-                            <!--</div>-->
+									<p>
+										<?php echo $row['description']; ?>
+									</p>
+								</article>
+                            <?php 
 
+                            }
+
+							mysql_close($conn);
+                            ?>
 
                     </div>
                 </div>
@@ -101,9 +109,9 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li ><a href="home.html">Dashboard</a></li>
-									<li><a href="preference.html">Preferences</a></li>
-									<li><a href="index.html">Logout</a></li>
+									<li ><a href="home.php">Dashboard</a></li>
+									<li><a href="preference.php">Preferences</a></li>
+									<li><a href="logout.php">Logout</a></li>
 								</ul>
 							</nav>
 

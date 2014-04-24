@@ -47,19 +47,19 @@
                                         <span class="byline">Login to view dashboard</span>
                                     </header>
                                     <p>
-                                        <form action="home.html" class="login active">
+                                        <form action="redirect-login.php" class="login active" method="post">
 											
 											<div>
 												<label>Username:</label>
-												<input type="text" />
+												<input type="text" name="user_name"/>
 											</div>
 											<div>
-												<label>Password: <!--<a href="forgot_password.html" rel="forgot_password" class="forgot linkform">Forgot your password?</a>--></label>
-												<input type="password" />
+												<label>Password:</label>
+												<input type="password" name="user_pwd"/>
 											</div>
 											<div>
 												<input type="submit"  value="Login"></input>
-												<a href="register.html" rel="register" class="linkform">You don't have an account yet? Register here</a>
+												<a href="register.php" rel="register" class="linkform">You don't have an account yet? Register here</a>
 												<div class="clear"></div>
 											</div>
 										</form>

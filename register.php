@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Striped 2.5 by HTML5 Up!
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Share and Save</title>
@@ -21,9 +16,6 @@
 			<link rel="stylesheet" href="css/style-desktop.css" />
 			<link rel="stylesheet" href="css/style-wide.css" />
 		</noscript>
-		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
-		<!--[if lte IE 7]><link rel="stylesheet" href="css/ie7.css" /><![endif]-->
 	</head>
 	<!--
 		Note: Set the body element's class to "left-sidebar" to position the sidebar on the left.
@@ -47,15 +39,15 @@
                                         <span class="byline">Enter details here</span>
                                     </header>
                                     <p>
-                                        <form action="index.html" class="register active">
+                                        <form action="insert_user.php" class="register active" method="post">
 											<div class="column">
 												<div>
 													<label>Name:</label>
-													<input type="text" />
+													<input type="text" name="user_name"/>
 												</div>
 												<div>
 													<label>Blood group(tap the textbox to select)</label>
-													<select>
+													<select name="user_grp">
 													  <option value="A+">A+</option>
 													  <option value="A-">A-</option>
 													  <option value="B+">B+</option>
@@ -69,21 +61,21 @@
 											
 												<div>
 													<label>Email:</label>
-													<input type="text" />
+													<input type="text" name="user_email"/>
 												</div>
 												<div>
 													<label>Password:</label>
-													<input type="password" />
+													<input type="password" name="user_pwd"/>
 												</div>
 												<div>
 													<label>Address:</label>
-													<input type="text" />
+													<input type="text" name="user_address"/>
 												</div>
 											</div>
 											<div class="bottom">
 											
 											<input type="submit" value="Register" />
-												<a href="index.html" rel="login" class="linkform">You have an account already? Log in here</a>
+												<a href="index.php" rel="login" class="linkform">You have an account already? Log in here</a>
 												<div class="clear"></div>
 											</div>
 										</form>
